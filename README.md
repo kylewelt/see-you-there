@@ -1,7 +1,9 @@
 # See You There
 
 ## Description
-See You There is am application that makes it easy for two people to meet up at a common location, that's easy and convenient for both parties. With See You There, a user is able to find a bar, cafe, restaurant, or other place near the midpoint between two destinations. After entering two locations, any category filters, and transit options, the user will be displayed a single semi-randomized result within and embedded map, along with directions to the destination for both travellers. The resulting destination will display additional relevant information, such as name, location, category, etc. If, following searching, the user is not totally satisfied with their result, they can quickly request a new semi-randomized result, without performing the initial search again. Although See You There is able to be used by anyone without registering, users will have the option to register for an account, where they can save their favorite start and end locations, such as Home and Work.
+_See You There_ is an application that makes it simple for two people to meet up at a common location, that's easy and convenient for both parties. With _See You There_, a user is able to find a bar, cafe, restaurant, or other place near the midpoint between two destinations. After entering two locations, any category filters, and transit options, the user will be displayed a single semi-randomized result within and embedded map, along with directions to the destination for both travellers. The resulting destination will display additional relevant information, such as name, location, category, etc. If, following searching, the user is not totally satisfied with their result, they can quickly request a new semi-randomized result, without performing the initial search again.
+
+Although See You There is able to be used by anyone without registering, users will have the option to register for an account, where they can save their favorite start and end locations, such as Home and Work.
 
 ## Technologies In Use
 - Google Maps API
