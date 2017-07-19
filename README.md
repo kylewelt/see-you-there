@@ -5,6 +5,6 @@
 ## Technologies In Use
 
 ## Supporting Documentation
-- [User Stories]()
+- [User Stories](https://docs.google.com/document/d/1HVeCwPOewC3kwxUk-h2ijLTfyTpGyiizv_bmdQZ0LOk/edit?usp=sharing)
 - [Wireframes](http://k7g14q.axshare.com)
 - [Entity Relationship Diagram](https://www.lucidchart.com/documents/view/291dcc80-941b-4ed9-aa0d-7ad15a7f5dd4)
