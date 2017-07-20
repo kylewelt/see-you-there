@@ -6,13 +6,13 @@ _WTFSWM_ is an application that makes it simple for two people to meet up at a c
 Although _WTFSWM_ is able to be used by anyone without registering, users will have the option to register for an account, where they can save their favorite start and end locations, such as Home and Work.
 
 ## Technologies In Use
+- [facebook/react](https://github.com/facebook/react)
+- React Redux
+- React Router
+- [material-ui](https://github.com/callemall/material-ui)
 - Google Maps API
 - Google Directions API
 - Google Places API
-- Materialize CSS
-- React JS
-- React Redux
-- React Router
 
 ## Supporting Documentation
 - [User Stories](https://docs.google.com/document/d/1HVeCwPOewC3kwxUk-h2ijLTfyTpGyiizv_bmdQZ0LOk/edit?usp=sharing)
