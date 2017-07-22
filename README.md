@@ -9,7 +9,7 @@ Although _WTFSWM_ is able to be used by anyone without registering, users will h
 - [facebook/react](https://github.com/facebook/react)
 - React Redux
 - React Router
-- [material-ui](https://github.com/callemall/material-ui)
+- [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React)
 - Google Maps API
 - Google Directions API
 - Google Places API

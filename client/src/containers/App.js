@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
-// import logo from '../images/logo.svg'
 import './App.css'
-import { Button } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
+import NavContainer from './NavContainer'
+import DirectionsContainer from './DirectionsContainer'
+import MapContainer from './MapContainer'
 
 class App extends Component {
   render () {
     return (
       <div className='App'>
-        <Button>
-          Click Here
-        </Button>
+        <NavContainer />
+        <Container>
+          <DirectionsContainer />
+          <MapContainer />
+        </Container>
       </div>
     )
   }
