@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'semantic-ui-react'
 
-class DirectionsSearchForm extends Component {
+class SearchForm extends Component {
   state = {
     origin: '',
     destination: '',
@@ -65,4 +65,4 @@ class DirectionsSearchForm extends Component {
   }
 }
 
-export default DirectionsSearchForm
+export default SearchForm
