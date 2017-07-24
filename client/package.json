@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "geocoder": "^0.2.3",
     "google-maps-react": "^1.0.19",
     "raf": "^3.3.2",
     "react": "^15.6.1",
