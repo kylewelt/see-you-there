@@ -8,7 +8,7 @@ class NavContainer extends Component {
       <Menu>
         <Container>
           <Menu.Item as={NavLink} to='/'>
-            WTFSWM
+            WSWM
           </Menu.Item>
         </Container>
       </Menu>
