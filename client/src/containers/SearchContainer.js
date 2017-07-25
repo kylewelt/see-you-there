@@ -1,47 +1,16 @@
 /* global google */
 import React, { Component } from 'react'
+import connect from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import SearchForm from '../components/SearchForm'
-import geocoder from 'geocoder'
+import getGeosFromAddresses from '../helpers/geoLocatorDispatch.js'
 
 class SearchContainer extends Component {
 
   handleSubmit = (event) => {
+    //TODO don't do anything if both values passed arent valid addr strings
     event.preventDefault()
-    console.log('Clicked submit!')
-    // dispatch an action to geocode and store our endpoints
-    // dispatch an action to fetch and store our directions
-  }
-
-  // this needs to be moved to our actions/reducer?
-  geocodeEndpoint = (endpoint) => {
-    geocoder.geocode(endpoint, function ( err, data ) {
-      if (!err) {
-        return data
-      } else {
-        console.error(`error fetching geocode ${err}`)
-      }
-    })
-  }
-
-  // this needs to be moved to our actions/reducer?
-  getDirections = () => {
-    const DirectionsService = new google.maps.DirectionsService();
-    const geocodedOrigin = this.geocodeEndpoint()
-
-    DirectionsService.route({
-      origin: '',
-      destination: '',
-      travelMode: google.maps.TravelMode.DRIVING,
-    }, (result, status) => {
-      if (status === google.maps.DirectionsStatus.OK) {
-        this.setState({
-          directions: result,
-        })
-      } else {
-        console.error(`error fetching directions ${result}`);
-      }
-    })
+    getGeosFromAddresses(event.target[0].value, event.target[1].value)
   }
 
   render () {

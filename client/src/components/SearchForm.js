@@ -7,11 +7,11 @@ let SearchForm = (props) => {
   return (
     <Form as={'form'} onSubmit={handleSubmit}>
       <Form.Field>
-        <label htmlFor='origin'>Starting Location 1</label>
+        <label htmlFor='origin'>Start Location A</label>
         <Field name='origin' component='input' type='text' />
       </Form.Field>
       <Form.Field>
-        <label htmlFor='destination'>Starting Location 2</label>
+        <label htmlFor='destination'>Start Location B</label>
         <Field name='destination' component='input' type='text' />
       </Form.Field>
       <Form.Button>
