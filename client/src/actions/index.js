@@ -1,16 +1,32 @@
-import { SET_DIRECTIONS } from './actionTypes'
-import { SET_PLACES } from './actionTypes'
+import {
+  REQUEST_LOCATION,
+  FETCH_LOCATION_REQUEST,
+  FETCH_LOCATION_FAILURE,
+  FETCH_LOCATION_SUCCESS,
+  RECEIVE_GEOCODE,
+  REQUEST_DIRECTIONS,
+  FETCH_DIRECTIONS_REQUEST,
+  FETCH_DIRECTIONS_FAILURE,
+  FETCH_DIRECTIONS_SUCCESS,
+  RECEIVE_DIRECTIONS,
+  REQUEST_PLACES,
+  FETCH_PLACES_REQUEST,
+  FETCH_PLACES_FAILURE,
+  FETCH_PLACES_SUCCESS,
+  RECEIVE_PLACES
+} from './actionTypes'
 
-export function setP2pDirections (directions) {
+export function requestLocation (address) {
   return {
-    type: SET_DIRECTIONS,
-    payload: directions
+    type: REQUEST_LOCATION,
+    payload: address
   }
 }
 
-export function setPlaces (places) {
+export function receiveGeocode (address, json) {
   return {
-    type: SET_PLACES,
-    payload: places
+    type: RECEIVE_GEOCODE,
+    address,
+    location: json
   }
 }
