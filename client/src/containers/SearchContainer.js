@@ -1,6 +1,4 @@
-/* global google */
 import React, { Component } from 'react'
-import connect from 'react-redux'
 import { Segment } from 'semantic-ui-react'
 import SearchForm from '../components/SearchForm'
 import getGeosFromAddresses from '../helpers/geoLocatorDispatch.js'

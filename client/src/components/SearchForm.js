@@ -15,7 +15,7 @@ let SearchForm = (props) => {
         <Field name='destination' component='input' type='text' />
       </Form.Field>
       <Form.Button>
-        Go
+        Find a place to meet
       </Form.Button>
     </Form>
   )

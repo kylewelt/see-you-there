@@ -39,7 +39,7 @@ function createMarkers (map) {
   })
 
   var infowindow = new google.maps.InfoWindow({
-    content: '<div><strong>' + place.name + '</strong></div>'
+    content: '<div>You should meet at:<br><strong>' + place.name + '</strong></div>'
   })
 
   infowindow.open(map, end)
@@ -50,7 +50,6 @@ function getPlaces (loc) {
   var map
   var service
   var midReg = new google.maps.LatLng(loc[1], loc[0])
-  console.log('search:', midReg)
 
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
@@ -66,10 +65,11 @@ function getPlaces (loc) {
   }
 
   service.nearbySearch(request, (results, status) => {
-    console.log('results:', results)
-    console.log('status:', status)
     if (status === 'OK') {
-      place = results[0]
+      console.log('results:', results)
+      let randPlace = results[Math.floor(Math.random() * results.length)]
+      place = randPlace
+
       createMarkers(map)
     }
   })
@@ -78,6 +78,7 @@ function getPlaces (loc) {
 function getMidpoint (geoA, geoB) {
   let midLong = (geoA[0] + geoB[0]) / 2
   let midLat = (geoA[1] + geoB[1]) / 2
+
   return [midLong, midLat]
 }
 
@@ -87,9 +88,7 @@ function getGeoFromAddress (add) {
     if (geoA) {
       geoB = [data.results[0].geometry.location.lng, data.results[0].geometry.location.lat]
       midpoint = getMidpoint(geoA, geoB)
-      console.log('start A:', geoA)
-      console.log('start B:', geoB)
-      console.log('midpoint:', midpoint)
+
       getPlaces(midpoint)
     } else {
       geoA = [data.results[0].geometry.location.lng, data.results[0].geometry.location.lat]

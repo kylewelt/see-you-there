@@ -1,4 +1,3 @@
-/* global google */
 import canUseDOM from "can-use-dom";
 import raf from "raf";
 import { default as React, Component } from "react"
@@ -19,11 +18,6 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
     defaultZoom={14}
     center={props.center}
   >
-    {/* {props.center && (
-      <InfoWindow position={props.center}>
-        <div>{props.content}</div>
-      </InfoWindow>
-    )} */}
     {props.center && (
       <Circle
         center={props.center}

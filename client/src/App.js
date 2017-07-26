@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import './App.css'
-import { Container, Grid, Header } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
 import Navigation from './components/Navigation'
 import SearchContainer from './containers/SearchContainer'
 import LocationMapContainer from './containers/LocationMapContainer'
-import DirectionsMapContainer from './containers/DirectionsMapContainer'
-import PlaceContainer from './containers/PlaceContainer'
 
 class App extends Component {
   render () {
