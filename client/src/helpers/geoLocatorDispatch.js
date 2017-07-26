@@ -6,10 +6,19 @@ let geoB = false
 let midpoint = false
 let place = false
 
+function setMapBounds (map) {
+  var bounds = new google.maps.LatLngBounds()
+  let posA = new google.maps.LatLng(geoA[1], geoA[0])
+  let posB = new google.maps.LatLng(geoB[1], geoB[0])
+
+  bounds.extend(posA)
+  bounds.extend(posB)
+  map.fitBounds(bounds)
+}
+
 function createMarkers (map) {
   let posA = new google.maps.LatLng(geoA[1], geoA[0])
   let posB = new google.maps.LatLng(geoB[1], geoB[0])
-  let bounds = new google.maps.LatLngBounds(posA, posB)
 
   var startA = new google.maps.Marker({
     map: map,
@@ -30,12 +39,11 @@ function createMarkers (map) {
   })
 
   var infowindow = new google.maps.InfoWindow({
-    content: '<div><strong>' + place.name + '</strong><br></div>',
-    position: place.geometry.location
+    content: '<div><strong>' + place.name + '</strong></div>'
   })
-  infowindow.open(map)
 
-  map.fitBounds(bounds)
+  infowindow.open(map, end)
+  setMapBounds(map)
 }
 
 function getPlaces (loc) {
