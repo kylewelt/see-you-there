@@ -1,28 +1,57 @@
-import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { Form } from 'semantic-ui-react'
+import React, { Component } from 'react'
+import { Button, Form } from 'semantic-ui-react'
+import getGeocodeLocations from '../helpers/geocodeHelper.js'
+import getMidpointPlaces from '../helpers/placesHelper.js'
 
-let SearchForm = (props) => {
-  const { handleSubmit } = props
-  return (
-    <Form as={'form'} onSubmit={handleSubmit}>
-      <Form.Field>
-        <label htmlFor='origin'>Start Location A</label>
-        <Field name='origin' component='input' type='text' />
-      </Form.Field>
-      <Form.Field>
-        <label htmlFor='destination'>Start Location B</label>
-        <Field name='destination' component='input' type='text' />
-      </Form.Field>
-      <Form.Button>
-        Find a place to meet
-      </Form.Button>
-    </Form>
-  )
+class SearchForm extends Component {
+  state = {
+    locA: '',
+    locB: ''
+  }
+
+  onInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+
+    // get geocoded locationA, locationB, midpoint
+    getGeocodeLocations(this.state.locA, this.state.locB)
+      .then((geoData) => {
+        // get places near geoMid
+        getMidpointPlaces(geoData.geoMid)
+          .then((placesData) => {
+            this.setState({
+              places: placesData
+            })
+          })
+
+        this.setState({
+          geoLocs: geoData
+        })
+      })
+  }
+
+  render () {
+    return (
+      <Form onSubmit={this.handleSubmit}>
+        <Form.Field>
+          <label>Start Location A</label>
+          <input name='locA' type='text' onChange={this.onInputChange} />
+        </Form.Field>
+        <Form.Field>
+          <label>Start Location B</label>
+          <input name='locB' type='text' onChange={this.onInputChange} />
+        </Form.Field>
+        <Button>
+          Find a place to meet
+        </Button>
+      </Form>
+    )
+  }
 }
-
-SearchForm = reduxForm({
-  form: 'directionsSearch'
-})(SearchForm)
 
 export default SearchForm

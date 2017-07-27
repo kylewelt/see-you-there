@@ -1,30 +1,43 @@
 import React, { Component } from 'react'
-import './App.css'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container, Grid } from 'semantic-ui-react'
+
 import Navigation from './components/Navigation'
-import SearchContainer from './containers/SearchContainer'
+import SearchForm from './components/SearchForm'
 import LocationMapContainer from './containers/LocationMapContainer'
+import PlacesMapContainer from './containers/PlacesMapContainer'
 
 class App extends Component {
   render () {
     return (
-      <div className='App'>
-        <Navigation />
-        <Container>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                <SearchContainer />
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>
-                <LocationMapContainer />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      </div>
+      <Router >
+        <div className='App'>
+          <Route component={Navigation} path='/' />
+          <Container>
+            <Grid>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <Route render={() => <SearchForm />} path='/' />
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <Route component={LocationMapContainer} path='/' />
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <Route component={PlacesMapContainer} path='/' />
+                </Grid.Column>
+              </Grid.Row>
+
+            </Grid>
+          </Container>
+        </div>
+      </Router>
     )
   }
 }
