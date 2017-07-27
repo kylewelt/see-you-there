@@ -17,11 +17,12 @@ class App extends Component {
   }
 
   handleSubmit = (locations) => {
-    console.log('clicked', locations)
-
     // get geocoded locationA, locationB, midpoint
     getGeocodeLocations(locations.locA, locations.locB)
       .then((geoData) => {
+        this.setState({
+          geoLocs: geoData
+        })
         // get places near geoMid
         getMidpointPlaces(geoData.geoMid)
           .then((placesData) => {
@@ -29,10 +30,6 @@ class App extends Component {
               places: placesData
             })
           })
-
-        this.setState({
-          geoLocs: geoData
-        })
       })
   }
 

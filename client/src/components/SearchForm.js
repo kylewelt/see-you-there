@@ -17,24 +17,6 @@ class SearchForm extends Component {
     event.preventDefault()
     this.props.onSubmit(this.state)
   }
-  //   event.preventDefault()
-  //
-  //   // get geocoded locationA, locationB, midpoint
-  //   getGeocodeLocations(this.state.locA, this.state.locB)
-  //     .then((geoData) => {
-  //       // get places near geoMid
-  //       getMidpointPlaces(geoData.geoMid)
-  //         .then((placesData) => {
-  //           this.setState({
-  //             places: placesData
-  //           })
-  //         })
-  //
-  //       this.setState({
-  //         geoLocs: geoData
-  //       })
-  //     })
-  // }
 
   render () {
     return (

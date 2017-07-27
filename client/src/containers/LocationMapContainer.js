@@ -14,11 +14,11 @@ class LocationMapContainer extends Component {
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row>
+        {/* <Grid.Row>
           <Grid.Column>
             <LocationMapControls />
           </Grid.Column>
-        </Grid.Row>
+        </Grid.Row> */}
 
       </Grid>
     )
