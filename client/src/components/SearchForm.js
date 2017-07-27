@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Button, Form } from 'semantic-ui-react'
-import getGeocodeLocations from '../helpers/geocodeHelper.js'
-import getMidpointPlaces from '../helpers/placesHelper.js'
 
 class SearchForm extends Component {
   state = {
@@ -17,23 +15,26 @@ class SearchForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-
-    // get geocoded locationA, locationB, midpoint
-    getGeocodeLocations(this.state.locA, this.state.locB)
-      .then((geoData) => {
-        // get places near geoMid
-        getMidpointPlaces(geoData.geoMid)
-          .then((placesData) => {
-            this.setState({
-              places: placesData
-            })
-          })
-
-        this.setState({
-          geoLocs: geoData
-        })
-      })
+    this.props.onSubmit(this.state)
   }
+  //   event.preventDefault()
+  //
+  //   // get geocoded locationA, locationB, midpoint
+  //   getGeocodeLocations(this.state.locA, this.state.locB)
+  //     .then((geoData) => {
+  //       // get places near geoMid
+  //       getMidpointPlaces(geoData.geoMid)
+  //         .then((placesData) => {
+  //           this.setState({
+  //             places: placesData
+  //           })
+  //         })
+  //
+  //       this.setState({
+  //         geoLocs: geoData
+  //       })
+  //     })
+  // }
 
   render () {
     return (

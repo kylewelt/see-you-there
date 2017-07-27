@@ -12,7 +12,7 @@ function getMidpoint (coords) {
     geoMid: {
       lat: midLat,
       lng: midLng
-    },
+    }
   }
 }
 

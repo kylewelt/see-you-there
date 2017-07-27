@@ -7,7 +7,35 @@ import SearchForm from './components/SearchForm'
 import LocationMapContainer from './containers/LocationMapContainer'
 import PlacesMapContainer from './containers/PlacesMapContainer'
 
+import getGeocodeLocations from './helpers/geocodeHelper.js'
+import getMidpointPlaces from './helpers/placesHelper.js'
+
 class App extends Component {
+  state = {
+    geoLocs: {},
+    places: [],
+  }
+
+  handleSubmit = (locations) => {
+    console.log('clicked', locations)
+
+    // get geocoded locationA, locationB, midpoint
+    getGeocodeLocations(locations.locA, locations.locB)
+      .then((geoData) => {
+        // get places near geoMid
+        getMidpointPlaces(geoData.geoMid)
+          .then((placesData) => {
+            this.setState({
+              places: placesData
+            })
+          })
+
+        this.setState({
+          geoLocs: geoData
+        })
+      })
+  }
+
   render () {
     return (
       <Router >
@@ -18,7 +46,7 @@ class App extends Component {
 
               <Grid.Row>
                 <Grid.Column>
-                  <Route render={() => <SearchForm />} path='/' />
+                  <Route render={() => <SearchForm onSubmit={this.handleSubmit}/>} path='/' />
                 </Grid.Column>
               </Grid.Row>
 
@@ -30,7 +58,7 @@ class App extends Component {
 
               <Grid.Row>
                 <Grid.Column>
-                  <Route component={PlacesMapContainer} path='/' />
+                  <Route render={() => <PlacesMapContainer {...this.state} /> } path='/' />
                 </Grid.Column>
               </Grid.Row>
 
