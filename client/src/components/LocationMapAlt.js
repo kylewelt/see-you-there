@@ -1,8 +1,7 @@
-/* global google */
 import canUseDOM from 'can-use-dom'
 import raf from 'raf'
 import { default as React, Component } from 'react'
-import { withGoogleMap, GoogleMap, Circle, InfoWindow, Marker } from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Circle, InfoWindow } from 'react-google-maps'
 import { Dimmer, Loader } from 'semantic-ui-react'
 
 const geolocation = ( canUseDOM && navigator.geolocation ? navigator.geolocation : ({ getCurrentPosition(success, failure) { failure(`Your browser doesn't support geolocation.`) }, }) )
@@ -12,7 +11,6 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
     defaultZoom={14}
     center={props.center}
   >
-
     {props.center && (
       <Circle
         center={props.center}
@@ -21,42 +19,25 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
           fillColor: `red`,
           fillOpacity: 0.20,
           strokeColor: `red`,
-          strokeOpacity: 0.50,
-          strokeWeight: 0.80
+          strokeOpacity: 1,
+          strokeWeight: 1
         }}
       />
     )}
-
-    {props.places.map((marker, index) => (
-      <Marker
-        position={marker.geometry.location}
-        key={index}
-        animation={google.maps.Animation.DROP}
-        onClick={() => props.onMarkerClick(index)}
-        title={'PLACE'}
-      />
-    ))}
-
   </GoogleMap>
 ))
 
+/*
+ * Add <script src='https://maps.googleapis.com/maps/api/js'></script> to your HTML to provide google.maps reference
+ */
 export default class GeolocationExample extends Component {
   state = {
-    center: this.props.geoMid,
+    center: null,
     radius: 2000,
     loading: true
   }
 
   isUnmounted = false
-
-  componentWillReceiveProps (nextProps) {
-    if (this.props.geoMid === nextProps.geoMid) {
-      this.setState({
-        center: this.props.geoMid,
-        radius: 0
-      })
-    }
-  }
 
   componentDidMount () {
     const tick = () => {
@@ -65,7 +46,7 @@ export default class GeolocationExample extends Component {
       }
 
       this.setState({ radius: Math.max(this.state.radius - 20, 0) })
-      if (this.state.radius > 80) {
+      if (this.state.radius > 200) {
         raf(tick)
       }
     }
@@ -103,10 +84,6 @@ export default class GeolocationExample extends Component {
     this.isUnmounted = true
   }
 
-  onMarkerClick = (index) => {
-    this.props.onPlaceClick(index)
-  }
-
   render () {
     return (
       <div>
@@ -122,9 +99,6 @@ export default class GeolocationExample extends Component {
           }
           center={this.state.center}
           radius={this.state.radius}
-          places={this.props.places}
-          locations={this.props.geoLocs}
-          onMarkerClick={this.onMarkerClick}
         />
       </div>
     )

@@ -10,15 +10,15 @@ class LocationMapContainer extends Component {
 
         <Grid.Row>
           <Grid.Column>
-            <LocationMap />
+            <LocationMap {...this.props} />
           </Grid.Column>
         </Grid.Row>
 
-        {/* <Grid.Row>
+        <Grid.Row>
           <Grid.Column>
             <LocationMapControls />
           </Grid.Column>
-        </Grid.Row> */}
+        </Grid.Row>
 
       </Grid>
     )

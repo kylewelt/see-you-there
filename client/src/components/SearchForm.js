@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Container, Form, Segment } from 'semantic-ui-react'
 
 class SearchForm extends Component {
   state = {
@@ -15,23 +15,23 @@ class SearchForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.onSubmit(this.state)
+    this.props.onSearchSubmit(this.state)
   }
 
   render () {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
-          <label>Start Location A</label>
-          <input name='locA' type='text' onChange={this.onInputChange} />
+          <label>Starting Location A</label>
+          <input name='locA' type='text' onChange={this.onInputChange} required />
         </Form.Field>
         <Form.Field>
-          <label>Start Location B</label>
-          <input name='locB' type='text' onChange={this.onInputChange} />
+          <label>Starting Location B</label>
+          <input name='locB' type='text' onChange={this.onInputChange} required />
         </Form.Field>
-        <Button>
+        <Form.Button fluid>
           Find a place to meet
-        </Button>
+        </Form.Button>
       </Form>
     )
   }

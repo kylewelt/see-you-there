@@ -1,5 +1,5 @@
 import { default as React, Component } from 'react'
-import { Header, List } from 'semantic-ui-react'
+import { List } from 'semantic-ui-react'
 
 import PlaceItem from '../components/PlaceItem'
 
@@ -7,10 +7,9 @@ class PlacesListContainer extends Component {
   render () {
     return (
       <div>
-        <Header>Places</Header>
-        <List>
+        <List divided relaxed>
           {this.props.places.map((place, index) => (
-            <PlaceItem place={place} key={index} />
+            <PlaceItem place={place} key={index} index={index} onPlaceClick={this.props.onPlaceClick} />
           ))}
         </List>
       </div>

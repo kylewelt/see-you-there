@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Container, Grid } from 'semantic-ui-react'
 
 import Navigation from './components/Navigation'
+import SearchContainer from './containers/SearchContainer'
 import SearchForm from './components/SearchForm'
 import LocationMapContainer from './containers/LocationMapContainer'
-import PlacesMapContainer from './containers/PlacesMapContainer'
 import PlacesListContainer from './containers/PlacesListContainer'
 
 import getGeocodeLocations from './helpers/geocodeHelper.js'
@@ -19,10 +19,11 @@ class App extends Component {
       lat: 40.783060,
       lng: -73.971249
     },
-    places: []
+    places: [],
+    meetupIndex: null,
   }
 
-  handleSubmit = (locations) => {
+  handleSearchSubmit = (locations) => {
     // get geocoded locationA, locationB, midpoint
     getGeocodeLocations(locations.locA, locations.locB)
       .then((geoData) => {
@@ -41,40 +42,31 @@ class App extends Component {
       })
   }
 
+  handlePlaceClick = (index) => {
+    console.log('selected:', this.state.places[index])
+    this.setState({
+      meetupIndex: index
+    })
+  }
+
   render () {
     return (
       <Router >
         <div className='App'>
           <Route component={Navigation} path='/' />
-          <Container>
-            <Grid>
+          <Grid stackable>
 
-              <Grid.Row>
-                <Grid.Column>
-                  <Route render={() => <SearchForm onSubmit={this.handleSubmit}/>} path='/' />
-                </Grid.Column>
-              </Grid.Row>
+            <Grid.Row>
+              <Grid.Column stretched width={4}>
+                <Route render={() => <SearchContainer onSearchSubmit={this.handleSearchSubmit} places={this.state.places} onPlaceClick={this.handlePlaceClick} />} path='/' />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <Route render={() => <LocationMapContainer {...this.state} onPlaceClick={this.handlePlaceClick} /> } path='/' />
+              </Grid.Column>
 
-              <Grid.Row>
-                <Grid.Column>
-                  <Route component={LocationMapContainer} path='/' />
-                </Grid.Column>
-              </Grid.Row>
+            </Grid.Row>
 
-              <Grid.Row>
-                <Grid.Column>
-                  <Route render={() => <PlacesMapContainer {...this.state} /> } path='/' />
-                </Grid.Column>
-              </Grid.Row>
-
-              <Grid.Row>
-                <Grid.Column>
-                  <Route render={() => <PlacesListContainer {...this.state} /> } path='/' />
-                </Grid.Column>
-              </Grid.Row>
-
-            </Grid>
-          </Container>
+          </Grid>
         </div>
       </Router>
     )
