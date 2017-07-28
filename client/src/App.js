@@ -6,14 +6,20 @@ import Navigation from './components/Navigation'
 import SearchForm from './components/SearchForm'
 import LocationMapContainer from './containers/LocationMapContainer'
 import PlacesMapContainer from './containers/PlacesMapContainer'
+import PlacesListContainer from './containers/PlacesListContainer'
 
 import getGeocodeLocations from './helpers/geocodeHelper.js'
 import getMidpointPlaces from './helpers/placesHelper.js'
 
 class App extends Component {
   state = {
-    geoLocs: {},
-    places: [],
+    geoA: {},
+    geoB: {},
+    geoMid: {
+      lat: 40.783060,
+      lng: -73.971249
+    },
+    places: []
   }
 
   handleSubmit = (locations) => {
@@ -21,7 +27,9 @@ class App extends Component {
     getGeocodeLocations(locations.locA, locations.locB)
       .then((geoData) => {
         this.setState({
-          geoLocs: geoData
+          geoA: geoData.geoA,
+          geoB: geoData.geoB,
+          geoMid: geoData.geoMid
         })
         // get places near geoMid
         getMidpointPlaces(geoData.geoMid)
@@ -56,6 +64,12 @@ class App extends Component {
               <Grid.Row>
                 <Grid.Column>
                   <Route render={() => <PlacesMapContainer {...this.state} /> } path='/' />
+                </Grid.Column>
+              </Grid.Row>
+
+              <Grid.Row>
+                <Grid.Column>
+                  <Route render={() => <PlacesListContainer {...this.state} /> } path='/' />
                 </Grid.Column>
               </Grid.Row>
 

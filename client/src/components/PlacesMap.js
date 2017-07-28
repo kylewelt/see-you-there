@@ -9,18 +9,21 @@ const SimpleMapExampleGoogleMap = withGoogleMap(props => (
   >
 
     {props.places.map((marker, index) => (
-      <Marker position={marker.geometry.location} key={index} animation={google.maps.Animation.DROP} />
+      <Marker
+        position={marker.geometry.location}
+        key={index}
+        animation={google.maps.Animation.DROP}
+        onClick={() => props.onMarkerClick(index)}
+        title={'PLACE'}
+      />
     ))}
 
   </GoogleMap>
 ))
 
 export default class SimpleMapExample extends Component {
-  state = {
-    center: {
-      lat: 40.783060,
-      lng: -73.971249
-    }
+  onMarkerClick = (index) => {
+    console.log('clicked', index)
   }
 
   render () {
@@ -33,9 +36,10 @@ export default class SimpleMapExample extends Component {
         mapElement={
           <div style={{ height: `500px` }} />
         }
-        center={this.state.center}
+        center={this.props.geoMid}
         places={this.props.places}
         locations={this.props.geoLocs}
+        onMarkerClick={this.onMarkerClick}
       />
     )
   }
