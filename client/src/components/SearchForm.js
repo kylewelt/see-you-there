@@ -29,7 +29,7 @@ class SearchForm extends Component {
           <label>Starting Location B</label>
           <input name='locB' type='text' onChange={this.onInputChange} required />
         </Form.Field>
-        <Form.Button fluid>
+        <Form.Button fluid color='blue' >
           Find a place to meet
         </Form.Button>
       </Form>
