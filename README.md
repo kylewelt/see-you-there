@@ -6,13 +6,13 @@ _WSWM_ is an application that makes it simple for two people to meet up at a com
 Although _WSWM_ is able to be used by anyone without registering, users will have the option to register for an account, where they can save their favorite start and end locations, such as Home and Work.
 
 ## Technologies In Use
-- [facebook/react](https://github.com/facebook/react)
-- React Redux
-- React Router
+- [react](https://github.com/facebook/react)
+- [react-redux](https://github.com/reactjs/react-redux)
+- [react-router](https://github.com/ReactTraining/react-router)
 - [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React)
-- Google Maps API
-- Google Directions API
-- Google Places API
+- [Google Maps/Places/Directions JavaScript API](https://developers.google.com/maps/documentation/javascript/)
+- [react-google-maps](https://github.com/tomchentw/react-google-maps)
+- [geocoder](https://github.com/wyattdanger/geocoder)
 
 ## Supporting Documentation
 - [User Stories](https://docs.google.com/document/d/1HVeCwPOewC3kwxUk-h2ijLTfyTpGyiizv_bmdQZ0LOk/edit?usp=sharing)
