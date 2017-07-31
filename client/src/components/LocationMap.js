@@ -2,7 +2,7 @@
 import canUseDOM from 'can-use-dom'
 import raf from 'raf'
 import { default as React, Component } from 'react'
-import { withGoogleMap, GoogleMap, Circle, InfoWindow, Marker } from 'react-google-maps'
+import { withGoogleMap, GoogleMap, Circle, Marker, InfoWindow } from 'react-google-maps'
 import { Dimmer, Loader } from 'semantic-ui-react'
 
 const geolocation = ( canUseDOM && navigator.geolocation ? navigator.geolocation : ({ getCurrentPosition(success, failure) { failure(`Your browser doesn't support geolocation.`) }, }) )
@@ -27,14 +27,31 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
       />
     )}
 
+    {(Object.keys(props.geoA).length === 0 && props.geoA.constructor === Object) ? null : (
+      <Marker
+        position={props.geoA}
+        animation={google.maps.Animation.DROP}
+        label='A'
+      />
+    )}
+
+    {(Object.keys(props.geoB).length === 0 && props.geoB.constructor === Object) ? null : (
+      <Marker
+        position={props.geoB}
+        animation={google.maps.Animation.DROP}
+        label='B'
+      />
+    )}
+
     {props.places.map((marker, index) => (
       <Marker
         position={marker.geometry.location}
         key={index}
         animation={google.maps.Animation.DROP}
         onClick={() => props.onMarkerClick(index)}
-        title={'PLACE'}
-      />
+      >
+        {props.meetupIndex === index ? <InfoWindow><div>{marker.name}</div></InfoWindow> : null}
+      </Marker>
     ))}
 
   </GoogleMap>
@@ -118,13 +135,16 @@ export default class GeolocationExample extends Component {
             <div style={{ height: `100%` }} />
           }
           mapElement={
-            <div id='location-map' style={{ height: `500px` }} />
+            <div id='location-map' style={{ height: `750px` }} />
           }
           center={this.state.center}
           radius={this.state.radius}
           places={this.props.places}
           locations={this.props.geoLocs}
           onMarkerClick={this.onMarkerClick}
+          geoA={this.props.geoA}
+          geoB={this.props.geoB}
+          meetupIndex={this.props.meetupIndex}
         />
       </div>
     )

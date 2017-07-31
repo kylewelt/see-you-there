@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Container, Form, Segment } from 'semantic-ui-react'
+import { Form, Icon } from 'semantic-ui-react'
 
 class SearchForm extends Component {
   state = {
@@ -22,11 +22,17 @@ class SearchForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
-          <label>Starting Location A</label>
+          <label>
+            <Icon size='large' name='point' color='red' />
+            Starting Location A
+          </label>
           <input name='locA' type='text' onChange={this.onInputChange} required />
         </Form.Field>
         <Form.Field>
-          <label>Starting Location B</label>
+          <label>
+            <Icon size='large' name='point' color='red' />
+            Starting Location B
+          </label>
           <input name='locB' type='text' onChange={this.onInputChange} required />
         </Form.Field>
         <Form.Button fluid color='blue' >

@@ -13,8 +13,8 @@ const DirectionsExampleGoogleMap = withGoogleMap(props => (
  */
 export default class DirectionsExample extends Component {
   state = {
-    origin: new google.maps.LatLng(41.8507300, -87.6512600),
-    destination: new google.maps.LatLng(41.8525800, -87.6514100),
+    origin: this.props.origin,
+    destination: this.props.destination,
     directions: null,
   }
 
@@ -37,13 +37,14 @@ export default class DirectionsExample extends Component {
   }
 
   render() {
+    console.log(this.state.directions)
     return (
       <DirectionsExampleGoogleMap
         containerElement={
-          <div style={{ height: `500px` }} />
+          <div style={{ height: `100%` }} />
         }
         mapElement={
-          <div style={{ height: `500px` }} />
+          <div style={{ height: `750px` }} />
         }
         center={this.state.origin}
         directions={this.state.directions}

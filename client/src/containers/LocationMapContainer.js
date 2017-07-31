@@ -7,19 +7,16 @@ class LocationMapContainer extends Component {
   render () {
     return (
       <Grid>
-
         <Grid.Row>
           <Grid.Column>
             <LocationMap {...this.props} />
           </Grid.Column>
         </Grid.Row>
-
         <Grid.Row>
           <Grid.Column>
-            <LocationMapControls />
+            <LocationMapControls {...this.props} />
           </Grid.Column>
         </Grid.Row>
-
       </Grid>
     )
   }
