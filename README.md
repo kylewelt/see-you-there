@@ -1,7 +1,7 @@
-# WSWM
+# Where Should We Meet?
 
 ## Description
-_WSWM_ is an application that makes it simple for two people to meet up at a common location, that's easy and convenient for both parties. With _WSWM_, a user is able to find a bar, cafe, restaurant, or other place near the midpoint between two destinations. After entering two locations, any category filters, and transit options, the user will be displayed Places results within an embedded map, along with directions to the destination for both travellers. The resulting destination will display additional relevant information, such as name, location, category, etc.
+_Where Should We Meet?_ is an application that makes it simple for two people to meet up at a common location, that's easy and convenient for both parties. With _Where Should We Meet?_, a user is able to find a bar, cafe, restaurant, or other place near the midpoint between two destinations. After entering two locations, any category filters, and transit options, the user will be displayed Places results within an embedded map, along with directions to the destination for both travellers. The resulting destination will display additional relevant information, such as name, location, category, etc.
 
 ## Technologies In Use
 - [react](https://github.com/facebook/react)
