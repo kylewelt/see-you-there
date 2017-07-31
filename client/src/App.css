@@ -1,0 +1,20 @@
+.ui.divided.items>.item.place-result {
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+  padding-left: 0.5em !important;
+  padding-right: 0.5em !important;
+}
+
+.ui.items>.item.selected-place {
+  background-color: #F5F5F5;
+}
+
+.ui.divided.items {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.ui.divided.items>.item.place-result:hover {
+  background-color: #F5F5F5;
+  cursor: pointer;
+}

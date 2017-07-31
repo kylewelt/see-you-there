@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { Container, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
+
+import './App.css'
 
 import Navigation from './components/Navigation'
 import SearchContainer from './containers/SearchContainer'
-import SearchForm from './components/SearchForm'
 import LocationMapContainer from './containers/LocationMapContainer'
-import PlacesListContainer from './containers/PlacesListContainer'
+import DirectionsMapContainer from './containers/DirectionsMapContainer'
 
 import getGeocodeLocations from './helpers/geocodeHelper.js'
 import getMidpointPlaces from './helpers/placesHelper.js'
@@ -51,19 +52,24 @@ class App extends Component {
 
   render () {
     return (
-      <Router >
+      <Router>
         <div className='App'>
           <Route component={Navigation} path='/' />
           <Grid stackable>
 
             <Grid.Row>
               <Grid.Column stretched width={4}>
-                <Route render={() => <SearchContainer onSearchSubmit={this.handleSearchSubmit} places={this.state.places} onPlaceClick={this.handlePlaceClick} />} path='/' />
+                <Route exact path='/' render={() => <SearchContainer onSearchSubmit={this.handleSearchSubmit} places={this.state.places} meetupIndex={this.state.meetupIndex} onPlaceClick={this.handlePlaceClick} />} />
               </Grid.Column>
               <Grid.Column width={12}>
-                <Route render={() => <LocationMapContainer {...this.state} onPlaceClick={this.handlePlaceClick} /> } path='/' />
+                <Route exact path='/' render={() => <LocationMapContainer {...this.state} onPlaceClick={this.handlePlaceClick} /> } />
               </Grid.Column>
-
+              <Grid.Column width={8}>
+                <Route path='/directions' render={() => <DirectionsMapContainer {...this.state} header={'Starting Location A'} origin={this.state.geoA} destination={this.state.meetupIndex ? this.state.places[this.state.meetupIndex].geometry.location : this.state.geoMid} /> } />
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <Route path='/directions' render={() => <DirectionsMapContainer {...this.state} header={'Starting Location B'} origin={this.state.geoB} destination={this.state.meetupIndex ? this.state.places[this.state.meetupIndex].geometry.location : this.state.geoMid} /> } />
+              </Grid.Column>
             </Grid.Row>
 
           </Grid>
