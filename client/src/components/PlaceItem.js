@@ -10,8 +10,8 @@ class PlaceItem extends Component {
             {this.props.place.name}
           </Item.Header>
           <Item.Description>
-            <Label icon='star' color='blue' content={this.props.place.rating ? this.props.place.rating + ' / 5' : <i>n/a</i>} />
-            <Label icon='dollar' color='blue' content={this.props.place.price_level ? this.props.place.price_level + ' / 4' : <i>n/a</i>} />
+            <Label icon='star' color='yellow' content={this.props.place.rating ? this.props.place.rating + ' / 5' : <i>n/a</i>} />
+            <Label icon='dollar' color='green' content={this.props.place.price_level ? this.props.place.price_level + ' / 4' : <i>n/a</i>} />
           </Item.Description>
           <Item.Extra>
             {this.props.place.types.map((type, index) => {

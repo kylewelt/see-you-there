@@ -37,14 +37,14 @@ export default class DirectionsExample extends Component {
   }
 
   render() {
-    console.log(this.state.directions)
+    console.log('directions:', this.state.directions)
     return (
       <DirectionsExampleGoogleMap
         containerElement={
           <div style={{ height: `100%` }} />
         }
         mapElement={
-          <div style={{ height: `750px` }} />
+          <div style={{ height: `500px` }} />
         }
         center={this.state.origin}
         directions={this.state.directions}
