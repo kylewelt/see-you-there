@@ -25,6 +25,16 @@ class App extends Component {
   }
 
   handleSearchSubmit = (locations) => {
+    this.setState({
+      geoA: {},
+      geoB: {},
+      geoMid: {
+        lat: 40.783060,
+        lng: -73.971249
+      },
+      places: [],
+      meetupIndex: null,
+    })
     // get geocoded locationA, locationB, midpoint
     getGeocodeLocations(locations.locA, locations.locB)
       .then((geoData) => {

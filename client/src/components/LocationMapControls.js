@@ -8,7 +8,13 @@ class LocationMapControls extends Component {
       <Grid>
         <Grid.Row>
           <Grid.Column>
-            <Button as={Link} to={'/directions'} disabled={this.props.meetupIndex === null} fluid color='red' >
+            <Button
+              as={Link}
+              to={'/directions'}
+              disabled={this.props.meetupIndex === null}
+              color={this.props.meetupIndex === null ? '' : 'blue'}
+              fluid
+            >
               Get directions
             </Button>
           </Grid.Column>

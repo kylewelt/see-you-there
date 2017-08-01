@@ -8,7 +8,7 @@ class DirectionsList extends Component {
   render () {
     console.log('directions:', this.props.directions)
     return (
-      <Grid>
+      <Grid stackable>
         <Grid.Row>
           <Grid.Column>
             <Header>Route Overview</Header>
@@ -20,8 +20,8 @@ class DirectionsList extends Component {
             <Header>Directions</Header>
             <Item.Group divided>
               {(this.props.directions !== null)
-                ? this.props.directions.routes[0].legs[0].steps.map(step => {
-                  return <DirectionsStep step={step} />
+                ? this.props.directions.routes[0].legs[0].steps.map((step, index) => {
+                  return <DirectionsStep key={index} step={step} />
                 })
                 : null}
             </Item.Group>

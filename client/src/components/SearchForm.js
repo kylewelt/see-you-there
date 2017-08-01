@@ -35,7 +35,7 @@ class SearchForm extends Component {
           </label>
           <input name='locB' type='text' onChange={this.onInputChange} required />
         </Form.Field>
-        <Form.Button fluid color='blue' >
+        <Form.Button fluid color={(this.state.locA === '' || this.state.locB === '') ? '' : 'blue'} disabled={this.state.locA === '' || this.state.locB === ''}>
           Find a place to meet
         </Form.Button>
       </Form>
