@@ -8,9 +8,9 @@ class PlacesItemsContainer extends Component {
     return (
       <div>
         <Header>
-          {this.props.places.length > 0 ? this.props.places.length + ' results near your midpoint' : null}
+          {this.props.places.length > 0 ? this.props.places.length + ' results near the location midpoint' : null}
         </Header>
-        <Item.Group divided>
+        <Item.Group divided className='place-results'>
           {this.props.places.map((place, index) => (
             <PlaceItem place={place} key={index} index={index} meetupIndex={this.props.meetupIndex} onPlaceClick={this.props.onPlaceClick} />
           ))}

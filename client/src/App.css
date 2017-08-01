@@ -9,7 +9,7 @@
   background-color: #F5F5F5;
 }
 
-.ui.divided.items {
+.ui.divided.items.place-results {
   max-height: 500px;
   overflow-y: scroll;
 }

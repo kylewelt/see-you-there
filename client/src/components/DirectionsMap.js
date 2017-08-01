@@ -1,6 +1,9 @@
 /* global google */
 import { default as React, Component } from "react"
 import { withGoogleMap, GoogleMap, DirectionsRenderer } from "react-google-maps"
+import { Grid } from 'semantic-ui-react'
+
+import DirectionsList from './DirectionsList'
 
 const DirectionsExampleGoogleMap = withGoogleMap(props => (
   <GoogleMap defaultZoom={7} defaultCenter={props.center} >
@@ -24,7 +27,7 @@ export default class DirectionsExample extends Component {
     DirectionsService.route({
       origin: this.state.origin,
       destination: this.state.destination,
-      travelMode: google.maps.TravelMode.DRIVING,
+      travelMode: google.maps.TravelMode.TRANSIT,
     }, (result, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
         this.setState({
@@ -37,18 +40,28 @@ export default class DirectionsExample extends Component {
   }
 
   render() {
-    console.log('directions:', this.state.directions)
     return (
-      <DirectionsExampleGoogleMap
-        containerElement={
-          <div style={{ height: `100%` }} />
-        }
-        mapElement={
-          <div style={{ height: `500px` }} />
-        }
-        center={this.state.origin}
-        directions={this.state.directions}
-      />
+      <Grid divided='vertically'>
+        <Grid.Row>
+          <Grid.Column stretched>
+            <DirectionsExampleGoogleMap
+              containerElement={
+                <div style={{ height: `100%` }} />
+              }
+              mapElement={
+                <div style={{ height: `300px` }} />
+              }
+              center={this.state.origin}
+              directions={this.state.directions}
+            />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <DirectionsList directions={this.state.directions} />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     )
   }
 }

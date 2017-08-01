@@ -9,7 +9,7 @@ const geolocation = ( canUseDOM && navigator.geolocation ? navigator.geolocation
 
 const GeolocationExampleGoogleMap = withGoogleMap(props => (
   <GoogleMap
-    defaultZoom={14}
+    defaultZoom={13}
     center={props.center}
   >
 
@@ -30,7 +30,6 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
     {(Object.keys(props.geoA).length === 0 && props.geoA.constructor === Object) ? null : (
       <Marker
         position={props.geoA}
-        animation={google.maps.Animation.DROP}
         label='A'
       />
     )}
@@ -38,7 +37,6 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
     {(Object.keys(props.geoB).length === 0 && props.geoB.constructor === Object) ? null : (
       <Marker
         position={props.geoB}
-        animation={google.maps.Animation.DROP}
         label='B'
       />
     )}

@@ -59,16 +59,16 @@ class App extends Component {
 
             <Grid.Row>
               <Grid.Column stretched width={4}>
-                <Route exact path='/' render={() => <SearchContainer onSearchSubmit={this.handleSearchSubmit} places={this.state.places} meetupIndex={this.state.meetupIndex} onPlaceClick={this.handlePlaceClick} />} />
+                <Route exact path='/' render={() => <SearchContainer {...this.state} onSearchSubmit={this.handleSearchSubmit} onPlaceClick={this.handlePlaceClick} />} />
               </Grid.Column>
               <Grid.Column width={12}>
                 <Route exact path='/' render={() => <LocationMapContainer {...this.state} onPlaceClick={this.handlePlaceClick} /> } />
               </Grid.Column>
               <Grid.Column width={8}>
-                <Route path='/directions' render={() => <DirectionsMapContainer {...this.state} header={'Starting Location A'} origin={this.state.geoA} destination={this.state.meetupIndex ? this.state.places[this.state.meetupIndex].geometry.location : this.state.geoMid} /> } />
+                <Route path='/directions' render={() => <DirectionsMapContainer {...this.state} header={'Directions from Location A'} origin={this.state.geoA} destination={this.state.meetupIndex ? this.state.places[this.state.meetupIndex].geometry.location : this.state.geoMid} /> } />
               </Grid.Column>
               <Grid.Column width={8}>
-                <Route path='/directions' render={() => <DirectionsMapContainer {...this.state} header={'Starting Location B'} origin={this.state.geoB} destination={this.state.meetupIndex ? this.state.places[this.state.meetupIndex].geometry.location : this.state.geoMid} /> } />
+                <Route path='/directions' render={() => <DirectionsMapContainer {...this.state} header={'Directions from Location B'} origin={this.state.geoB} destination={this.state.meetupIndex ? this.state.places[this.state.meetupIndex].geometry.location : this.state.geoMid} /> } />
               </Grid.Column>
             </Grid.Row>
 

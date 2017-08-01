@@ -3,6 +3,7 @@ import geocoder from 'geocoder'
 function getMidpoint (coords) {
   let geoA = coords[0]
   let geoB = coords[1]
+
   let midLat = (geoA.lat + geoB.lat) / 2
   let midLng = (geoA.lng + geoB.lng) / 2
 
@@ -23,7 +24,11 @@ function getGeocode (loc) {
         console.error(`error fetching geocode ${err}`)
         reject(err)
       }
-      resolve(data.results[0].geometry.location)
+      if (data.status === 'OK') {
+        resolve(data.results[0].geometry.location)
+      } else {
+        alert('Could not find a matching address')
+      }
     })
   })
   return geoLoc

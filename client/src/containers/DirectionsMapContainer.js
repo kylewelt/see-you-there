@@ -6,7 +6,7 @@ export default class DirectionsMapContainer extends Component {
   render () {
     return (
       <Segment>
-        <Header>{'Directions from ' + this.props.header}</Header>
+        <Header>{this.props.header}</Header>
         <DirectionsMap {...this.props} />
       </Segment>
     )
