@@ -1,3 +1,7 @@
+body {
+  background-color: #F5F5F5;
+}
+
 .ui.divided.items>.item.place-result {
   padding-top: 1em !important;
   padding-bottom: 1em !important;
@@ -17,8 +21,4 @@
 .ui.divided.items>.item.place-result:hover {
   background-color: #F5F5F5;
   cursor: pointer;
-}
-
-.App {
-  background-color: #F5F5F5;
 }

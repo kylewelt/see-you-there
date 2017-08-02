@@ -16,27 +16,21 @@ class App extends Component {
   state = {
     geoA: {},
     geoB: {},
-    geoMid: {
-      lat: 40.783060,
-      lng: -73.971249
-    },
+    geoMid: {},
+    placeTypes: ['restaurant'],
     places: [],
     meetupIndex: null,
+    travelMode: 'DRIVING'
   }
 
-  handleSearchSubmit = (locations) => {
+  handleSearchSubmit = (searchInputs) => {
     this.setState({
-      geoA: {},
-      geoB: {},
-      geoMid: {
-        lat: 40.783060,
-        lng: -73.971249
-      },
-      places: [],
       meetupIndex: null,
+      travelMode: searchInputs.travelMode,
+      placeTypes: searchInputs.placeTypes
     })
     // get geocoded locationA, locationB, midpoint
-    getGeocodeLocations(locations.locA, locations.locB)
+    getGeocodeLocations(searchInputs.locA, searchInputs.locB)
       .then((geoData) => {
         this.setState({
           geoA: geoData.geoA,
@@ -44,7 +38,7 @@ class App extends Component {
           geoMid: geoData.geoMid
         })
         // get places near geoMid
-        getMidpointPlaces(geoData.geoMid)
+        getMidpointPlaces(geoData.geoMid, this.state.placeTypes)
           .then((placesData) => {
             this.setState({
               places: placesData
@@ -54,7 +48,6 @@ class App extends Component {
   }
 
   handlePlaceClick = (index) => {
-    console.log('selected:', this.state.places[index])
     this.setState({
       meetupIndex: index
     })

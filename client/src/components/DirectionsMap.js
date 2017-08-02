@@ -19,6 +19,21 @@ export default class DirectionsExample extends Component {
     origin: this.props.origin,
     destination: this.props.destination,
     directions: null,
+    travelMode: this.props.travelMode
+  }
+
+  getTravelMode = () => {
+    switch (this.props.travelMode) {
+      case 'TRANSIT':
+        return google.maps.TravelMode.TRANSIT
+      case 'WALKING':
+        return google.maps.TravelMode.WALKING
+      case 'BICYCLING':
+        return google.maps.TravelMode.BICYCLING
+      default:
+        return google.maps.TravelMode.DRIVING
+
+    }
   }
 
   componentDidMount() {
@@ -27,11 +42,11 @@ export default class DirectionsExample extends Component {
     DirectionsService.route({
       origin: this.state.origin,
       destination: this.state.destination,
-      travelMode: google.maps.TravelMode.TRANSIT,
+      travelMode: this.getTravelMode()
     }, (result, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
         this.setState({
-          directions: result,
+          directions: result
         })
       } else {
         console.error(`error fetching directions ${result}`);
