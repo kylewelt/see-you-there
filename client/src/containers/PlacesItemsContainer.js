@@ -5,10 +5,11 @@ import PlaceItem from '../components/PlaceItem'
 
 class PlacesItemsContainer extends Component {
   render () {
+    console.log(this.props.geoMid)
     return (
       <div>
         <Header>
-          {this.props.places.length > 0 ? this.props.places.length + ' results near the location midpoint' : null}
+          {this.props.places.length > 0 ? 'Choose your destination:' : null}
         </Header>
         <Item.Group divided className='place-results'>
           {this.props.places.map((place, index) => (

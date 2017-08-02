@@ -1,5 +1,5 @@
 import { default as React, Component } from 'react'
-import { Item } from 'semantic-ui-react'
+import { Grid, Item } from 'semantic-ui-react'
 
 class DirectionsStep extends Component {
   createMarkup = () => {
@@ -11,6 +11,9 @@ class DirectionsStep extends Component {
       <Item>
         <Item.Content>
           <div dangerouslySetInnerHTML={this.createMarkup()} />
+          <Item.Extra>
+            {this.props.step.distance.text}
+          </Item.Extra>
         </Item.Content>
       </Item>
     )

@@ -14,7 +14,7 @@ body {
 }
 
 .ui.divided.items.place-results {
-  max-height: 500px;
+  max-height: 375px;
   overflow-y: scroll;
 }
 

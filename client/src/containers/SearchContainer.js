@@ -11,7 +11,7 @@ class SearchContainer extends Component {
         <Grid divided='vertically'>
           <Grid.Row>
             <Grid.Column>
-              <SearchForm onSearchSubmit={this.props.onSearchSubmit} />
+              <SearchForm {...this.props} onSearchSubmit={this.props.onSearchSubmit} />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

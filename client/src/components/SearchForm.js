@@ -5,8 +5,8 @@ class SearchForm extends Component {
   state = {
     locA: '',
     locB: '',
-    travelMode: 'DRIVING',
-    placeTypes: ['restaurant']
+    travelMode: this.props.travelMode,
+    placeType: this.props.placeType
   }
 
   onInputChange = (event) => {
@@ -54,7 +54,15 @@ class SearchForm extends Component {
           </Button.Group>
         </Form.Field>
 
-        <Form.Button fluid disabled={this.state.locA === '' || this.state.locB === ''}>
+        <Form.Field>
+          <Button.Group fluid>
+            <Button icon='food' name='placeType' value={'restaurant'} active={this.state.placeType === 'restaurant'} onClick={this.onButtonInputChange} />
+            <Button icon='cocktail' name='placeType' value={'bar'} active={this.state.placeType === 'bar'} onClick={this.onButtonInputChange} />
+            <Button icon='coffee' name='placeType' value={'cafe'} active={this.state.placeType === 'cafe'} onClick={this.onButtonInputChange} />
+          </Button.Group>
+        </Form.Field>
+
+        <Form.Button fluid color='blue' disabled={this.state.locA === '' || this.state.locB === ''}>
           Find a place to meet
         </Form.Button>
       </Form>

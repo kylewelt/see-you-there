@@ -17,7 +17,7 @@ class App extends Component {
     geoA: {},
     geoB: {},
     geoMid: {},
-    placeTypes: ['restaurant'],
+    placeType: 'restaurant',
     places: [],
     meetupIndex: null,
     travelMode: 'DRIVING'
@@ -25,9 +25,13 @@ class App extends Component {
 
   handleSearchSubmit = (searchInputs) => {
     this.setState({
+      geoA: {},
+      geoB: {},
+      geoMid: {},
+      places: [],
       meetupIndex: null,
       travelMode: searchInputs.travelMode,
-      placeTypes: searchInputs.placeTypes
+      placeType: searchInputs.placeType
     })
     // get geocoded locationA, locationB, midpoint
     getGeocodeLocations(searchInputs.locA, searchInputs.locB)
@@ -38,7 +42,7 @@ class App extends Component {
           geoMid: geoData.geoMid
         })
         // get places near geoMid
-        getMidpointPlaces(geoData.geoMid, this.state.placeTypes)
+        getMidpointPlaces(geoData.geoMid, this.state.placeType)
           .then((placesData) => {
             this.setState({
               places: placesData

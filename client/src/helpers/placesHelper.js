@@ -14,6 +14,8 @@ function getMidpointPlaces (loc, types) {
     service.nearbySearch(request, (results, status) => {
       if (status === 'OK') {
         resolve(results)
+      } else if (status === 'ZERO_RESULTS') {
+        resolve(results)
       }
     })
   })
