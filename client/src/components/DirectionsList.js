@@ -6,7 +6,6 @@ import DirectionsStep from './DirectionsStep'
 
 class DirectionsList extends Component {
   render () {
-    console.log('directions:', this.props.directions)
     return (
       <Grid stackable>
         <Grid.Row>

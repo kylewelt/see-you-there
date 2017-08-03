@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, Icon, Radio } from 'semantic-ui-react'
+import { Button, Form, Icon } from 'semantic-ui-react'
 
 class SearchForm extends Component {
   state = {
@@ -28,6 +28,7 @@ class SearchForm extends Component {
   }
 
   render () {
+
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>

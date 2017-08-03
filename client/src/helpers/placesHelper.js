@@ -12,9 +12,7 @@ function getMidpointPlaces (loc, types) {
 
   let places = new Promise((resolve, reject) => {
     service.nearbySearch(request, (results, status) => {
-      if (status === 'OK') {
-        resolve(results)
-      } else if (status === 'ZERO_RESULTS') {
+      if (status === 'OK' || status === 'ZERO_RESULTS') {
         resolve(results)
       }
     })

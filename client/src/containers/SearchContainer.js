@@ -16,7 +16,7 @@ class SearchContainer extends Component {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <PlacesItemsContainer places={this.props.places} meetupIndex={this.props.meetupIndex} onPlaceClick={this.props.onPlaceClick} />
+              <PlacesItemsContainer results={this.props.results} places={this.props.places} meetupIndex={this.props.meetupIndex} onPlaceClick={this.props.onPlaceClick} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
