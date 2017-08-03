@@ -3,7 +3,7 @@ import canUseDOM from 'can-use-dom'
 import raf from 'raf'
 import { default as React, Component } from 'react'
 import { withGoogleMap, GoogleMap, Circle, Marker, InfoWindow } from 'react-google-maps'
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Dimmer, Icon,  Loader } from 'semantic-ui-react'
 
 const geolocation = ( canUseDOM && navigator.geolocation ? navigator.geolocation : ({ getCurrentPosition(success, failure) { failure(`Your browser doesn't support geolocation.`) }, }) )
 
@@ -38,6 +38,21 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
       <Marker
         position={props.geoB}
         label='B'
+      />
+    )}
+
+    {(Object.keys(props.geoB).length === 0 && props.geoB.constructor === Object) ? null : (
+      <Marker
+        position={props.geoB}
+        label='B'
+      />
+    )}
+
+    {(Object.keys(props.geoMid).length === 0 && props.geoMid.constructor === Object) ? null : (
+      <Marker
+        position={props.geoMid}
+        icon={'https://mts.googleapis.com/vt/icon/name=icons/spotlight/spotlight-waypoint-blue.png&psize=16&font=fonts/Roboto-Regular.ttf&color=ff333333&ax=44&ay=48&scale=1'}
+
       />
     )}
 
@@ -142,6 +157,7 @@ export default class GeolocationExample extends Component {
           onMarkerClick={this.onMarkerClick}
           geoA={this.props.geoA}
           geoB={this.props.geoB}
+          geoMid={this.props.geoMid}
           meetupIndex={this.props.meetupIndex}
         />
       </div>
