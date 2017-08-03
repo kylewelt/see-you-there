@@ -3,8 +3,8 @@ import { Button, Form, Icon } from 'semantic-ui-react'
 
 class SearchForm extends Component {
   state = {
-    locA: '',
-    locB: '',
+    locA: this.props.locA,
+    locB: this.props.locB,
     travelMode: this.props.travelMode,
     placeType: this.props.placeType
   }
@@ -36,14 +36,14 @@ class SearchForm extends Component {
             <Icon size='large' name='point' color='red' />
             Starting Location A
           </label>
-          <input name='locA' type='text' onChange={this.onInputChange} required />
+          <input name='locA' type='text' onChange={this.onInputChange} value={this.state.locA} required/>
         </Form.Field>
         <Form.Field>
           <label>
             <Icon size='large' name='point' color='red' />
             Starting Location B
           </label>
-          <input name='locB' type='text' onChange={this.onInputChange} required />
+          <input name='locB' type='text' onChange={this.onInputChange} value={this.state.locB} required />
         </Form.Field>
 
         <Form.Field>

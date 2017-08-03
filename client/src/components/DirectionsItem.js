@@ -3,7 +3,6 @@ import { Grid, Header } from 'semantic-ui-react'
 
 class DirectionsItem extends Component {
   render () {
-    console.log('route:', this.props.route)
     const leg = this.props.route.legs[0]
     return (
       <Grid.Row>

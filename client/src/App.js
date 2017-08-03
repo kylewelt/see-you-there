@@ -14,6 +14,8 @@ import getMidpointPlaces from './helpers/placesHelper.js'
 
 class App extends Component {
   state = {
+    locA: '',
+    locB: '',
     geoA: {},
     geoB: {},
     geoMid: {},
@@ -26,6 +28,8 @@ class App extends Component {
 
   handleSearchSubmit = (searchInputs) => {
     this.setState({
+      locA: searchInputs.locA,
+      locB: searchInputs.locB,
       geoA: {},
       geoB: {},
       geoMid: {},
