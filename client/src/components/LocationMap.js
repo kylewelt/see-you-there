@@ -30,21 +30,14 @@ const GeolocationExampleGoogleMap = withGoogleMap(props => (
     {(Object.keys(props.geoA).length === 0 && props.geoA.constructor === Object) ? null : (
       <Marker
         position={props.geoA}
-        label='A'
+        icon={'https://mts.googleapis.com/vt/icon/name=icons/spotlight/spotlight-waypoint-a.png&text=A&psize=16&font=fonts/Roboto-Regular.ttf&color=ff333333&ax=44&ay=48&scale=1'}
       />
     )}
 
     {(Object.keys(props.geoB).length === 0 && props.geoB.constructor === Object) ? null : (
       <Marker
         position={props.geoB}
-        label='B'
-      />
-    )}
-
-    {(Object.keys(props.geoB).length === 0 && props.geoB.constructor === Object) ? null : (
-      <Marker
-        position={props.geoB}
-        label='B'
+        icon={'https://mts.googleapis.com/vt/icon/name=icons/spotlight/spotlight-waypoint-a.png&text=B&psize=16&font=fonts/Roboto-Regular.ttf&color=ff333333&ax=44&ay=48&scale=1'}
       />
     )}
 

@@ -33,14 +33,14 @@ class SearchForm extends Component {
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
           <label>
-            <Icon size='large' name='point' color='red' />
+            <Icon size='large' name='point' color='green' />
             Starting Location A
           </label>
           <input name='locA' type='text' onChange={this.onInputChange} value={this.state.locA} required/>
         </Form.Field>
         <Form.Field>
           <label>
-            <Icon size='large' name='point' color='red' />
+            <Icon size='large' name='point' color='green' />
             Starting Location B
           </label>
           <input name='locB' type='text' onChange={this.onInputChange} value={this.state.locB} required />
