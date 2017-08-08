@@ -7,7 +7,6 @@ _Where Should We Meet?_ is an application that makes it simple for two people to
 
 ## Technologies In Use
 - [react](https://github.com/facebook/react)
-- [react-redux](https://github.com/reactjs/react-redux)
 - [react-router](https://github.com/ReactTraining/react-router)
 - [semantic-ui-react](https://github.com/Semantic-Org/Semantic-UI-React)
 - [Google Maps/Places/Directions JavaScript API](https://developers.google.com/maps/documentation/javascript/)
